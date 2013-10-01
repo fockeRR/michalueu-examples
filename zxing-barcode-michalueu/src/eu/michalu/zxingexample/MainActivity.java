@@ -20,7 +20,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 public class MainActivity extends Activity {
 
 	public static final int SCANNER_RESULT = 111;
-	public static final boolean QRCODE_OR_BARCODE_ENCODE = true; // true for
+	public static final boolean QRCODE_OR_BARCODE_ENCODE = false; // true for
 																	// barcode
 																	// encoding
 	public ImageView img;
@@ -72,6 +72,7 @@ public class MainActivity extends Activity {
 							img.setImageBitmap(bmp);
 							img.setAdjustViewBounds(true);        
 							img.setScaleType(ImageView.ScaleType.FIT_CENTER);
+							img.setVisibility(View.VISIBLE);
 							tv.setVisibility(View.GONE); 
 
 						} catch (Exception e) {
