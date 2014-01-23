@@ -1,9 +1,9 @@
 package com.example.flickr_michalueu_example;
 
+import android.graphics.Bitmap;
+
 import com.example.flickr_michalueu_example.FlickrManager.GetThumbnailsThread;
 import com.example.flickr_michalueu_example.MainActivity.UIHandler;
-
-import android.graphics.Bitmap;
 
 public class ImageContener implements IThumb {
 	String id;
@@ -12,39 +12,12 @@ public class ImageContener implements IThumb {
 	Bitmap thumb;
 	Bitmap photo;
 	String largeURL;
-	String owner;// ;: "69155168@N07",
-	String secret;// : "f546671ea1",
-	String server;// : "8089",
-	String farm;// : 9,
+	String owner;
+	String secret;
+	String server;
+	String farm;
 
-	public String getThumbURL() {
-		return thumbURL;
-	}
-
-	public void setThumbURL(String thumbURL) {
-		this.thumbURL = thumbURL;
-		onSaveThumbURL(this.position, FlickrManager.uihandler, this);
-		// thumb = FlickrManager.getThumbnail(this);
-	}
-
-	public String getLargeURL() {
-		return largeURL;
-	}
-
-	public void setLargeURL(String largeURL) {
-		this.largeURL = largeURL;
-		// photo = FlickrManager.getImage(this);
-	}
-
-	@Override
-	public String toString() {
-		return "ImageContener [id=" + id + ", thumbURL=" + thumbURL
-				+ ", largeURL=" + largeURL + ", owner=" + owner + ", secret="
-				+ secret + ", server=" + server + ", farm=" + farm + "]";
-	}
-
-	public ImageContener(String id, String thumbURL, String largeURL,
-			String owner, String secret, String server, String farm) {
+	public ImageContener(String id, String thumbURL, String largeURL, String owner, String secret, String server, String farm) {
 		super();
 		this.id = id;
 		this.owner = owner;
@@ -53,8 +26,7 @@ public class ImageContener implements IThumb {
 		this.farm = farm;
 	}
 
-	public ImageContener(String id, String owner, String secret, String server,
-			String farm) {
+	public ImageContener(String id, String owner, String secret, String server, String farm) {
 		super();
 		this.id = id;
 		this.owner = owner;
@@ -65,10 +37,32 @@ public class ImageContener implements IThumb {
 		setLargeURL(createPhotoURL(FlickrManager.PHOTO_LARGE, this));
 	}
 
+	public String getThumbURL() {
+		return thumbURL;
+	}
+
+	public void setThumbURL(String thumbURL) {
+		this.thumbURL = thumbURL;
+		onSaveThumbURL(FlickrManager.uihandler, this);
+	}
+
+	public String getLargeURL() {
+		return largeURL;
+	}
+
+	public void setLargeURL(String largeURL) {
+		this.largeURL = largeURL;
+	}
+
+	@Override
+	public String toString() {
+		return "ImageContener [id=" + id + ", thumbURL=" + thumbURL + ", largeURL=" + largeURL + ", owner=" + owner + ", secret=" + secret + ", server=" + server + ", farm="
+				+ farm + "]";
+	}
+
 	private String createPhotoURL(int photoType, ImageContener imgCon) {
 		String tmp = null;
-		tmp = "http://farm" + imgCon.farm + ".staticflickr.com/"
-				+ imgCon.server + "/" + imgCon.id + "_" + imgCon.secret;// +".jpg";
+		tmp = "http://farm" + imgCon.farm + ".staticflickr.com/" + imgCon.server + "/" + imgCon.id + "_" + imgCon.secret;// +".jpg";
 		switch (photoType) {
 		case FlickrManager.PHOTO_THUMB:
 			tmp += "_t";
@@ -82,9 +76,73 @@ public class ImageContener implements IThumb {
 		return tmp;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getPosition() {
+		return position;
+	}
+
+	public void setPosition(int position) {
+		this.position = position;
+	}
+
+	public Bitmap getThumb() {
+		return thumb;
+	}
+
+	public void setThumb(Bitmap thumb) {
+		this.thumb = thumb;
+	}
+
+	public Bitmap getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(Bitmap photo) {
+		this.photo = photo;
+	}
+
+	public String getOwner() {
+		return owner;
+	}
+
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+
+	public String getSecret() {
+		return secret;
+	}
+
+	public void setSecret(String secret) {
+		this.secret = secret;
+	}
+
+	public String getServer() {
+		return server;
+	}
+
+	public void setServer(String server) {
+		this.server = server;
+	}
+
+	public String getFarm() {
+		return farm;
+	}
+
+	public void setFarm(String farm) {
+		this.farm = farm;
+	}
+
 	@Override
-	public void onSaveThumbURL(int position, UIHandler uih, ImageContener ic) {
+	public void onSaveThumbURL(UIHandler uih, ImageContener ic) {
 		// TODO Auto-generated method stub
-		new GetThumbnailsThread(position, uih, ic).start();
+		new GetThumbnailsThread(uih, ic).start();
 	}
 }

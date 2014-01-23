@@ -16,6 +16,7 @@ public class URLConnector {
 
 	private static int CONNECT_TIMEOUT_MS = 5000;
 	private static int READ_TIMEOUT_MS = 15000;
+
 	public static boolean isOnline(Context ctx) {
 		ConnectivityManager cm = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
 		NetworkInfo netInfo = cm.getActiveNetworkInfo();
@@ -24,7 +25,7 @@ public class URLConnector {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Read all bytes from urlS
 	 * 
@@ -41,7 +42,7 @@ public class URLConnector {
 				System.setProperty("http.keepAlive", "false");
 			}
 			URL url = new URL(urlS);
-			Log.i("URL",url.toString());
+			Log.i("URL", url.toString());
 			httpURLConnection = (HttpURLConnection) url.openConnection();
 			int response = httpURLConnection.getResponseCode();
 			if (response == HttpURLConnection.HTTP_OK) {

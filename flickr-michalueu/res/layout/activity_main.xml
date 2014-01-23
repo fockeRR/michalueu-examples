@@ -7,6 +7,7 @@
         android:id="@+id/layout_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
         android:orientation="horizontal"
         android:weightSum="4" >
 
@@ -14,19 +15,18 @@
             android:id="@+id/editText1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:hint="Type a flickr tag..."
             android:layout_gravity="center_vertical"
-            android:layout_weight="3" />
+            android:layout_weight="3"
+            android:hint="@string/edit_text_hint"
+            android:singleLine="true"
+            android:text="android" />
 
         <Button
             android:id="@+id/button1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/editText1"
             android:layout_weight="1"
-            android:text="Get" />
+            android:text="@string/button_label" />
     </LinearLayout>
 
     <Gallery
@@ -41,6 +41,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/gallery1" />
-<!--     <ProgressBar /> -->
 
 </RelativeLayout>
