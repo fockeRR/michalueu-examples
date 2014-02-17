@@ -37,5 +37,4 @@ public class WebViewActivity extends Activity {
 		//load webpage from assets
 		mWebView.loadUrl("file:///android_asset/list.html");
 	}
-
 }
