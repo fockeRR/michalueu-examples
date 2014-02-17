@@ -1,0 +1,6 @@
+/bin/
+/gen/
+/.classpath
+/lint.xml
+/proguard-project.txt
+/.settings/
