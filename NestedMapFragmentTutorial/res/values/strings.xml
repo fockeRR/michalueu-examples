@@ -1,0 +1,9 @@
+<resources>
+
+    <string name="app_name">NestedMapFragmentTutorial</string>
+
+    <string name="website">Website</string>
+
+    <string name="directions">Directions</string>
+
+</resources>
